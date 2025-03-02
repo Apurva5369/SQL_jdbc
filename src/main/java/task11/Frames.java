@@ -25,32 +25,28 @@ public class Frames {
 		int sizeof=a.size();
 		System.out.println("Number of frames in upper section is"+sizeof);
 		
-		//WebElement left = driver.findElement(By.xpath("//frame[@name='frame-left']"));
-		//driver.switchTo().frame(left);
-       // String left1=left.getText();
-       // System.out.println("Inside left:-"+left1);
-		
-		//WebElement middle = driver.findElement(By.xpath("//frame[@name='frame-middle']"));
-		//driver.switchTo().frame(middle);
-		
-		driver.switchTo().defaultContent();
+		//driver.switchTo().defaultContent();
 		driver.switchTo().frame(0);
-		WebElement left = driver.findElement(By.xpath("//frame[@src='/frame_left']"));
-		String left1=left.getText();
 		
-		boolean left5=left.isDisplayed();
-		System.out.println("Inside left frame:-"+left5);
+		System.out.println(driver.findElement(By.xpath("//body")).getText().trim());
 		
 		driver.switchTo().parentFrame();
-		WebElement middle = driver.findElement(By.xpath("//div[contains(text(),'MIDDLE')]"));
-		driver.switchTo().frame(middle);
-		WebElement middle2 = driver.findElement(By.xpath("//frame[@src='/frame_middle']"));
-		//String middle1=left.getText();
+		driver.switchTo().frame(1);
+		
+		System.out.println(driver.findElement(By.xpath("//body")).getText().trim());
 		
 		
+		driver.switchTo().parentFrame();
+		driver.switchTo().frame(2);
 		
-		boolean middle5=middle2.isDisplayed();
-		System.out.println("Inside middle frame:-"+middle5);
+		System.out.println(driver.findElement(By.xpath("//body")).getText().trim());
+		
+		
+		driver.switchTo().defaultContent();
+		WebElement bottom = driver.findElement(By.xpath("//frame[@name='frame-bottom']"));
+		driver.switchTo().frame(bottom);
+		
+		System.out.println(driver.findElement(By.xpath("//body")).getText().trim());
 		
 		driver.close();
 		
